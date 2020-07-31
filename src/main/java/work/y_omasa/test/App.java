@@ -1,17 +1,20 @@
 package work.y_omasa.test;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
+
 public class App {
     public static void main(String[] args) {
         User user = new User();
         user.setUserId("test001");
+
         String pwd = "1234";
         MessageDigest digest = null;
         try {
             //渡された文字列からハッシュを生成 
-            digest = MessageDigest.getInstance("MD5");
-            digest.reset();
-            digest.update(pwd.getBytes("utf8"));
+			digest = MessageDigest.getInstance("MD5");
+			digest.reset();
+			digest.update(pwd.getBytes("utf8"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -26,7 +29,9 @@ public class App {
         } catch (InputCheckException e) {
             e.printStackTrace();
         }
+
         System.out.println( user );
+
         if( user.isPwdValid("1234")){
             System.out.println("Password 1234 is valid");
         } else {
